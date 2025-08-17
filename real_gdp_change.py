@@ -156,12 +156,6 @@ large_parts = [part for part in russia_parts if part.area > min_area]
 clean_russia = unary_union(large_parts)
 merged.loc[merged['NAME']=='Russia', 'geometry'] = clean_russia
 
-# (Re‑)union Crimea into Ukraine if needed
-merged.loc[merged['NAME']=='Ukraine', 'geometry'] = (
-    merged.loc[merged['NAME']=='Ukraine', 'geometry']
-          .union(crimea)
-)
-
 # %%
 # --- Categorize GDP changes for visualization ---
 
